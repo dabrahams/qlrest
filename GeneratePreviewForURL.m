@@ -1,6 +1,6 @@
 #import <QuickLook/QuickLook.h>
 #import <Cocoa/Cocoa.h>
-#include "markdown.h"
+#include "rest.h"
 
 /* -----------------------------------------------------------------------------
    Generate a preview for file
@@ -12,7 +12,7 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
 							   CFURLRef url, CFStringRef contentTypeUTI, 
 							   CFDictionaryRef options)
 {
-    CFDataRef data = (CFDataRef) renderMarkdown((NSURL*) url);
+    CFDataRef data = (CFDataRef) renderRest((NSURL*) url);
 
     if (data) {
 		CFDictionaryRef props = (CFDictionaryRef) [NSDictionary dictionary];

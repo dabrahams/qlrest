@@ -1,7 +1,7 @@
 #import <QuickLook/QuickLook.h>
 #import <Cocoa/Cocoa.h>
 #import <WebKit/WebKit.h>
-#include "markdown.h"
+#include "rest.h"
 
 /* -----------------------------------------------------------------------------
     Generate a thumbnail for file
@@ -19,7 +19,7 @@ OSStatus GenerateThumbnailForURL(void *thisInterface,
 								 CFURLRef url, CFStringRef contentTypeUTI, 
 								 CFDictionaryRef options, CGSize maxSize)
 {
-    NSData *data = renderMarkdown((NSURL*) url);
+    NSData *data = renderRest((NSURL*) url);
 
     if (data) {
 		NSRect viewRect = NSMakeRect(0.0, 0.0, 600.0, 800.0);
