@@ -32,7 +32,9 @@ License
 
 The QLRest code is distributed under the terms in the file `LICENSE.txt`.
 
-QLRest is "based on" (read: largely copied from) QLMarkdown by Phil Toland <http://fiatdev.com> and Michael Dominic K. <http://www.mdk.org.pl>.
+QLRest is "based on" (read: largely copied from) `QLMarkdown`_ by Phil Toland <http://fiatdev.com> and Michael Dominic K. <http://www.mdk.org.pl>.
+
+.. _QLMarkdown: http://github.com/toland/qlmarkdown/
 
 Version History
 ---------------
