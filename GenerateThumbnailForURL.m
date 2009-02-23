@@ -19,7 +19,9 @@ OSStatus GenerateThumbnailForURL(void *thisInterface,
 								 CFURLRef url, CFStringRef contentTypeUTI, 
 								 CFDictionaryRef options, CGSize maxSize)
 {
-    NSData *data = renderRest((NSURL*) url);
+    // TODO: Fallback to plaintext rendering if rest rendering fails?
+	
+	NSData *data = renderRest((NSURL*) url);
 
     if (data) {
 		NSRect viewRect = NSMakeRect(0.0, 0.0, 600.0, 800.0);

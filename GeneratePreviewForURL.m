@@ -12,7 +12,9 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
 							   CFURLRef url, CFStringRef contentTypeUTI, 
 							   CFDictionaryRef options)
 {
-    CFDataRef data = (CFDataRef) renderRest((NSURL*) url);
+    // TODO: Fallback to plaintext rendering if rest rendering fails?
+	
+	CFDataRef data = (CFDataRef) renderRest((NSURL*) url);
 
     if (data) {
 		CFDictionaryRef props = (CFDictionaryRef) [NSDictionary dictionary];

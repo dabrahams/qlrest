@@ -1,30 +1,35 @@
-//
-//  RestConverter.m
-//  QLRest
-//
-//  Created by Idan Gazit on 23/2/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
-//
-
 #import "RestConverter.h"
+#import <Python/Python.h>
 
-@class PyRestConverter;
-
-@interface NSObject (MethodsThatReallyDoExist)
-- (NSString *) foo;
-@end
-
-@implementation RestConverter
-	-(void) initialize {
-		Class PyRestConverterClass = NSClassFromString(@"PyRestConverter");
-		NSObject * pyRestConv;
-		pyRestConv = [PyRestConverterClass new];
-	}
+NSData* renderRest(NSURL* url) {
 	
-	+(NSData*) renderRest: (NSURL*) url {
-		NSString *html = [pyRestConv foo];
-		return [html dataUsingEncoding:NSUTF8StringEncoding];
-	}
+	PyObject *pmodule, *pmethod, *presult;
+	PyTupleObject *pmethodargs;
+	PyDictObject *pmethodnamedargs;
+	char* output;
+	NSString *source = [NSString stringWithContentsOfFile:[url path] encoding:NSUTF8StringEncoding error:nil];
 	
-
-@end
+	Py_Initialize();
+	
+	// TODO: there's no exception handling going on here at all.
+	// TODO: Is it possible to make the warnings go away?
+	
+	pmethodargs = PyTuple_New(1);
+	pmethodnamedargs = PyDict_New();
+	
+	PyTuple_SetItem(pmethodargs, 0, PyString_FromString([source UTF8String]));
+	PyDict_SetItemString(pmethodnamedargs, "writer_name", PyString_FromString("html"));
+	pmodule = PyImport_ImportModule("docutils.core");
+	pmethod = PyObject_GetAttrString(pmodule, "publish_string");
+	presult = PyObject_Call(pmethod, pmethodargs, pmethodnamedargs);	
+	if (PyErr_Occurred())
+		PyErr_Print();
+	PyArg_Parse(presult, "s", &output);
+	if (PyErr_Occurred())
+		PyErr_Print();
+	
+	Py_Finalize();
+		
+	NSString *html = [NSString stringWithUTF8String:output];
+	return [html dataUsingEncoding:NSUTF8StringEncoding];
+}
