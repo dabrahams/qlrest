@@ -1,7 +1,7 @@
 #import <QuickLook/QuickLook.h>
 #import <Cocoa/Cocoa.h>
 #import <WebKit/WebKit.h>
-#include "rest.h"
+#include "RestConverter.h"
 
 /* -----------------------------------------------------------------------------
     Generate a thumbnail for file

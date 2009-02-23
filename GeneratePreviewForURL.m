@@ -1,6 +1,6 @@
 #import <QuickLook/QuickLook.h>
 #import <Cocoa/Cocoa.h>
-#include "rest.h"
+#include "RestConverter.h"
 
 /* -----------------------------------------------------------------------------
    Generate a preview for file

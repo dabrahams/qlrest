@@ -1,5 +1,5 @@
 #
-#  rest.py
+#  PyRestConverter.py
 #  QLRest
 #
 #  Created by Idan Gazit on 20/2/09.
@@ -11,9 +11,9 @@ import objc
 from docutils.core import publish_string
 
 NSObject = objc.lookUpClass(u"NSObject")
-class RestConverter(NSObject):
+class PyRestConverter(NSObject):
 	def __init__(self):
-		self = super(RestConverter, self).init()
+		self = super(PyRestConverter, self).init()
 		return self
 	
     def restToHtml_(self, rest):
