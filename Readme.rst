@@ -6,7 +6,7 @@ Introduction
 
 QLRest is a simple QuickLook generator for `ReStructuredText`_ files. It renders a preview of the selected ReST file using `python`_ and `docutils`_.
 
-For more information on ReStructuredText see 
+For more information on ReStructuredText see http://docutils.sourceforge.net/rst.html.
 
 .. _ReStructuredText: http://docutils.sourceforge.net/rst.html
 .. _python: http://www.python.org
