@@ -20,48 +20,53 @@ OSStatus GenerateThumbnailForURL(void *thisInterface,
 								 CFDictionaryRef options, CGSize maxSize)
 {
     // TODO: Fallback to plaintext rendering if rest rendering fails?
+	NSString *source = [NSString stringWithContentsOfFile:[url path] encoding:NSUTF8StringEncoding error:nil];
+	NSData *data = renderRest(source);
+	NSString *mimetype = @"text/html";
 	
-	NSData *data = renderRest((NSURL*) url);
+	if (!data) {
+		data = (CFDataRef) [source dataUsingEncoding:NSUTF8StringEncoding];
+		mimetype = @"text/plain";
+	}
+	
+	NSRect viewRect = NSMakeRect(0.0, 0.0, 600.0, 800.0);
+	float scale = maxSize.height / 800.0;
+	NSSize scaleSize = NSMakeSize(scale, scale);
+	CGSize thumbSize = NSSizeToCGSize(
+						NSMakeSize((maxSize.width * (600.0/800.0)), 
+								   maxSize.height));
 
-    if (data) {
-		NSRect viewRect = NSMakeRect(0.0, 0.0, 600.0, 800.0);
-		float scale = maxSize.height / 800.0;
-		NSSize scaleSize = NSMakeSize(scale, scale);
-		CGSize thumbSize = NSSizeToCGSize(
-                            NSMakeSize((maxSize.width * (600.0/800.0)), 
-                                       maxSize.height));
+	WebView* webView = [[WebView alloc] initWithFrame: viewRect];
+	[webView scaleUnitSquareToSize: scaleSize];
+	[[[webView mainFrame] frameView] setAllowsScrolling:NO];
+	[[webView mainFrame] loadData: data
+						 MIMEType: @"text/html"
+				 textEncodingName: @"utf-8"
+						  baseURL: nil];
 
-        WebView* webView = [[WebView alloc] initWithFrame: viewRect];
-		[webView scaleUnitSquareToSize: scaleSize];
-        [[[webView mainFrame] frameView] setAllowsScrolling:NO];
-        [[webView mainFrame] loadData: data
-                             MIMEType: @"text/html"
-                     textEncodingName: @"utf-8"
-                              baseURL: nil];
+	while([webView isLoading]) {
+		CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0, true);
+	}
 
-		while([webView isLoading]) {
-			CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0, true);
-		}
+	[webView display];
 
-		[webView display];
+	CGContextRef context = 
+		QLThumbnailRequestCreateContext(thumbnail, thumbSize, false, NULL);
 
-		CGContextRef context = 
-			QLThumbnailRequestCreateContext(thumbnail, thumbSize, false, NULL);
+	if (context) {
+		NSGraphicsContext* nsContext = 
+					[NSGraphicsContext
+						graphicsContextWithGraphicsPort: (void*) context 
+												flipped: [webView isFlipped]];
 
-		if (context) {
-			NSGraphicsContext* nsContext = 
-						[NSGraphicsContext
-							graphicsContextWithGraphicsPort: (void*) context 
-													flipped: [webView isFlipped]];
+		[webView displayRectIgnoringOpacity: [webView bounds]
+								  inContext: nsContext];
 
-			[webView displayRectIgnoringOpacity: [webView bounds]
-									  inContext: nsContext];
+		QLThumbnailRequestFlushContext(thumbnail, context);
 
-			QLThumbnailRequestFlushContext(thumbnail, context);
+		CFRelease(context);
+	}
 
-			CFRelease(context);
-		}
-    }
 
     return noErr;
 }

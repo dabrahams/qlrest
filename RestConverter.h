@@ -1,4 +1,4 @@
 #import <Foundation/Foundation.h>
 
-NSData* renderRest(NSURL* url);
+NSData* renderRest(NSString* source);
 

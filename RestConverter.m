@@ -1,7 +1,7 @@
 #import "RestConverter.h"
 #import <Python/Python.h>
 
-NSData* renderRest(NSURL* url) {
+NSData* renderRest(NSString* source) {
 	// Renders the contents of a NSURL from rest source into HTML.
 	// Requires that Python and docutils be installed.
 	// Returns NULL for any kind of failure.
@@ -11,7 +11,6 @@ NSData* renderRest(NSURL* url) {
 	PyObject *psource, *pwriter, *pmodule, *pmethod, *presult;
 	
 	char* output;
-	NSString *source = [NSString stringWithContentsOfFile:[url path] encoding:NSUTF8StringEncoding error:nil];
 	
 	Py_Initialize();
 	
