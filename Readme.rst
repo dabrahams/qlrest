@@ -41,6 +41,6 @@ QLRest is "based on" (read: largely copied from) `QLMarkdown`_ by Phil Toland <h
 Version History
 ---------------
 
-Version 1.0 - Feb 23rd 2009
+Version 0.1 - Feb 23rd 2009
 
 * Initial release. **"Alpha Quality" -- use at your own risk!**
