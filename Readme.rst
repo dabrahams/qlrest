@@ -18,7 +18,9 @@ Installation
 
 Simply copy QLRest.qlgenerator to ~/Library/QuickLook or /Library/QuickLook.
 
-To uninstall, drag QLRest into the trash.
+QLRest requires that docutils be installed and on the PYTHONPATH of your default python installation. If docutils cannot be found, or if another error arises during the rendering process, qlrest will fall back to plain-text previews.
+
+To uninstall, drag QLRest.qlgenerator into the trash.
 
 
 Source Code
