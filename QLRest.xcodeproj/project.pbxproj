@@ -17,15 +17,12 @@
 		AB40554314D008B3009A583A /* blocktags in Resources */ = {isa = PBXBuildFile; fileRef = AB40553E14D008B3009A583A /* blocktags */; };
 		AB40554414D008B3009A583A /* config.h in Headers */ = {isa = PBXBuildFile; fileRef = AB40553F14D008B3009A583A /* config.h */; };
 		AB40554514D008B3009A583A /* mkdio.h in Headers */ = {isa = PBXBuildFile; fileRef = AB40554014D008B3009A583A /* mkdio.h */; };
-		AB40554614D008B3009A583A /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = AB40554114D008B3009A583A /* README.markdown */; };
 		AB40554714D008B3009A583A /* update.sh in Resources */ = {isa = PBXBuildFile; fileRef = AB40554214D008B3009A583A /* update.sh */; };
 		AB40554A14D00A6A009A583A /* update-discount.sh in Resources */ = {isa = PBXBuildFile; fileRef = AB40554914D00A6A009A583A /* update-discount.sh */; };
 		AB40555514D00CCC009A583A /* Csio.c in Sources */ = {isa = PBXBuildFile; fileRef = AB40555014D00CCC009A583A /* Csio.c */; };
 		AB40555614D00CCC009A583A /* emmatch.c in Sources */ = {isa = PBXBuildFile; fileRef = AB40555114D00CCC009A583A /* emmatch.c */; };
 		AB40555714D00CCC009A583A /* generate.c in Sources */ = {isa = PBXBuildFile; fileRef = AB40555214D00CCC009A583A /* generate.c */; };
 		AB40555814D00CCC009A583A /* html5.c in Sources */ = {isa = PBXBuildFile; fileRef = AB40555314D00CCC009A583A /* html5.c */; };
-		AB40556214D00CFD009A583A /* markdown.c in Sources */ = {isa = PBXBuildFile; fileRef = AB40555A14D00CFD009A583A /* markdown.c */; };
-		AB40556314D00CFD009A583A /* markdown.h in Headers */ = {isa = PBXBuildFile; fileRef = AB40555B14D00CFD009A583A /* markdown.h */; };
 		AB40556414D00CFD009A583A /* mkdio.c in Sources */ = {isa = PBXBuildFile; fileRef = AB40555C14D00CFD009A583A /* mkdio.c */; };
 		AB40556514D00CFD009A583A /* resource.c in Sources */ = {isa = PBXBuildFile; fileRef = AB40555D14D00CFD009A583A /* resource.c */; };
 		AB40556614D00CFD009A583A /* setup.c in Sources */ = {isa = PBXBuildFile; fileRef = AB40555E14D00CFD009A583A /* setup.c */; };
@@ -53,16 +50,12 @@
 		AB40553E14D008B3009A583A /* blocktags */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = blocktags; sourceTree = "<group>"; };
 		AB40553F14D008B3009A583A /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
 		AB40554014D008B3009A583A /* mkdio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mkdio.h; sourceTree = "<group>"; };
-		AB40554114D008B3009A583A /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
 		AB40554214D008B3009A583A /* update.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = update.sh; sourceTree = "<group>"; };
 		AB40554914D00A6A009A583A /* update-discount.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "update-discount.sh"; sourceTree = "<group>"; };
 		AB40555014D00CCC009A583A /* Csio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Csio.c; sourceTree = "<group>"; };
 		AB40555114D00CCC009A583A /* emmatch.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = emmatch.c; sourceTree = "<group>"; };
 		AB40555214D00CCC009A583A /* generate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = generate.c; sourceTree = "<group>"; };
 		AB40555314D00CCC009A583A /* html5.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = html5.c; sourceTree = "<group>"; };
-		AB40555A14D00CFD009A583A /* markdown.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = markdown.c; sourceTree = "<group>"; };
-		AB40555B14D00CFD009A583A /* markdown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = markdown.h; sourceTree = "<group>"; };
-		AB40555C14D00CFD009A583A /* mkdio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mkdio.c; sourceTree = "<group>"; };
 		AB40555D14D00CFD009A583A /* resource.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = resource.c; sourceTree = "<group>"; };
 		AB40555E14D00CFD009A583A /* setup.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = setup.c; sourceTree = "<group>"; };
 		AB40555F14D00CFD009A583A /* tags.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tags.c; sourceTree = "<group>"; };
@@ -94,7 +87,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		089C166AFE841209C02AAC07 /* QLMarkdown */ = {
+		089C166AFE841209C02AAC07 /* QLRest */ = {
 			isa = PBXGroup;
 			children = (
 				08FB77AFFE84173DC02AAC07 /* Source */,
@@ -102,7 +95,7 @@
 				089C1671FE841209C02AAC07 /* External Frameworks and Libraries */,
 				19C28FB6FE9D52B211CA2CBB /* Products */,
 			);
-			name = QLMarkdown;
+			name = QLRest;
 			sourceTree = "<group>";
 		};
 		089C1671FE841209C02AAC07 /* External Frameworks and Libraries */ = {
@@ -180,7 +173,7 @@
 			);
 			name = QLRest;
 			productInstallPath = /Library/QuickLook;
-			productName = QLMarkdown;
+			productName = QLRest;
 			productReference = 8D576316048677EA00EA77CD /* QLRest.qlgenerator */;
 			productType = "com.apple.product-type.bundle";
 		};
@@ -199,7 +192,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = 089C166AFE841209C02AAC07 /* QLMarkdown */;
+			mainGroup = 089C166AFE841209C02AAC07 /* QLRest */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -267,7 +260,7 @@
 				HEADER_SEARCH_PATHS = "./discount-config";
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = /Library/QuickLook;
-				PRODUCT_NAME = QLMarkdown;
+				PRODUCT_NAME = QLRest;
 				SDKROOT = macosx;
 				VALID_ARCHS = "i386 x86_64";
 				WRAPPER_EXTENSION = qlgenerator;

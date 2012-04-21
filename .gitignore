@@ -1,6 +1,6 @@
 build
-QLMarkdown-*.zip
-QLMarkdown/*
+QLRest-*.zip
+QLRest/*
 *.xcodeproj/*.pbxuser
 *.xcodeproj/*.mode1v3
 *.xcodeproj/*.mode2v3
