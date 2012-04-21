@@ -52,9 +52,9 @@
   <key>CFBundleInfoDictionaryVersion</key>
   <string>6.0</string>
   <key>CFBundleVersion</key>
-  <string>1.0</string>
+  <string>1.2.1</string>
   <key>CFBundleShortVersionString</key>
-  <string>1</string>
+  <string>1.2.1</string>
   <key>CFPlugInDynamicRegisterFunction</key>
   <string></string>
   <key>CFPlugInDynamicRegistration</key>
@@ -80,7 +80,7 @@
   <!-- Change following property to <true/> if the generators needs
        to be run on main thread -->
   <key>QLNeedsToBeRunInMainThread</key>
-  <false/>
+  <true/>
   <!-- Change following property to indicate the minimum useful size for a thumbnail the generator
        can produce. If your generator is fast enough, you can remove the minimum size so to appear in lists -->
   <key>QLThumbnailMinimumSize</key>
