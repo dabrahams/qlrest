@@ -13,7 +13,7 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
 							   CFDictionaryRef options)
 {
     // TODO: Fallback to plaintext rendering if rest rendering fails?
-	NSString *source = [NSString stringWithContentsOfFile:[url path] encoding:NSUTF8StringEncoding error:nil];
+	NSString *source = [NSString stringWithContentsOfFile:[(NSURL*)url path] encoding:NSUTF8StringEncoding error:nil];
 	CFDataRef data = (CFDataRef) renderRest(source);
 	CFStringRef uttype = kUTTypeHTML;
 	if (!data) {
