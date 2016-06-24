@@ -20,12 +20,12 @@ OSStatus GenerateThumbnailForURL(void *thisInterface,
 								 CFDictionaryRef options, CGSize maxSize)
 {
     // TODO: Fallback to plaintext rendering if rest rendering fails?
-	NSString *source = [NSString stringWithContentsOfFile:[url path] encoding:NSUTF8StringEncoding error:nil];
+	NSString *source = [NSString stringWithContentsOfFile:[(NSURL*)url path] encoding:NSUTF8StringEncoding error:nil];
 	NSData *data = renderRest(source);
 	NSString *mimetype = @"text/html";
 	
 	if (!data) {
-		data = (CFDataRef) [source dataUsingEncoding:NSUTF8StringEncoding];
+		data = [source dataUsingEncoding:NSUTF8StringEncoding];
 		mimetype = @"text/plain";
 	}
 	
@@ -36,11 +36,11 @@ OSStatus GenerateThumbnailForURL(void *thisInterface,
 						NSMakeSize((maxSize.width * (600.0/800.0)), 
 								   maxSize.height));
 
-        WebView* webView = [[[WebView alloc] initWithFrame: viewRect] autorelease];
+	WebView* webView = [[[WebView alloc] initWithFrame: viewRect] autorelease];
 	[webView scaleUnitSquareToSize: scaleSize];
 	[[[webView mainFrame] frameView] setAllowsScrolling:NO];
 	[[webView mainFrame] loadData: data
-						 MIMEType: @"text/html"
+						 MIMEType: mimetype
 				 textEncodingName: @"utf-8"
 						  baseURL: nil];
 

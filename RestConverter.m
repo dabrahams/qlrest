@@ -46,6 +46,7 @@ NSData* renderRest(NSString* source) {
     if (pParts == NULL && PyErr_Occurred()) {
         PyObject *pErrType, *pErrValue, *pTraceback;
         PyErr_Fetch(&pErrType, &pErrValue, &pTraceback);
+
         if (pErrValue != NULL)
             html = [NSString stringWithFormat:@
                     "<html>"
@@ -77,6 +78,9 @@ NSData* renderRest(NSString* source) {
     pBody = PyDict_GetItemString(pParts, "html_body");
 
     if (pBody != NULL) {
+        char *body = PyString_AsString(PyUnicode_AsUTF8String(pBody));
+        Py_DECREF(pBody);
+
         NSString *styles = [NSString stringWithContentsOfFile:[[NSBundle bundleWithIdentifier: @"net.pixane.qlgenerator.QLRest"]
                                                                pathForResource:@"styles" ofType:@"css"]
                                                      encoding:NSUTF8StringEncoding
@@ -99,9 +103,7 @@ NSData* renderRest(NSString* source) {
                 "</div>"
                 "</body>"
                 "</html>",
-                styles, [NSString stringWithUTF8String:PyString_AsString(pBody)]];
-
-        Py_DECREF(pBody);
+                styles, [NSString stringWithUTF8String:body]];
 
         return [html dataUsingEncoding:NSUTF8StringEncoding];
     }
